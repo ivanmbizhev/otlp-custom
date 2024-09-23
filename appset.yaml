@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: opentelemetry-collector
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: opentelemetry-collector
+            repoURL: "https://github.com/ivanmbizhev/otlp-custom.git"
+            cluster: https://kubernetes.default.svc
+            targetRevision: master
+            namespace: "otlp"
+            path: .
+            valueFile: otlp.yaml
+  template:
+    metadata:
+      name: '{{name}}'
+      labels:
+        name: '{{name}}'
+        namespace: '{{namespace}}'
+    spec:
+      project: default
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
+        
+      source:
+        repoURL: '{{repoURL}}'
+        path: '{{path}}'
+        targetRevision: '{{targetRevision}}'
+        helm:
+          valueFiles:
+            - '{{valueFile}}'
+      destination:
+        server: '{{cluster}}'
+        namespace: '{{namespace}}'

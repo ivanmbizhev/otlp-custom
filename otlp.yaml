@@ -1,0 +1,39 @@
+mode: daemonset 
+
+presets: 
+ # enables the k8sattributesprocessor and adds it to the traces, metrics, and logs pipelines 
+  kubernetesAttributes: 
+    enabled: true 
+  # enables the kubeletstatsreceiver and adds it to the metrics pipelines 
+  kubeletMetrics: 
+    enabled: true 
+  # Enables the filelogreceiver and adds it to the logs pipelines 
+  logsCollection: 
+    enabled: true 
+## The chart only includes the loggingexporter by default 
+## If you want to send your data somewhere you need to 
+## configure an exporter, such as the otlpexporter 
+config: 
+  exporters: 
+    otlp: 
+      endpoint: "tempo-distributor.grafana-tempo.svc.cluster.local:4317" 
+      tls: 
+        insecure: true 
+  service: 
+    telemetry: 
+      logs: 
+        level: "debug" 
+    pipelines: 
+      traces: 
+        exporters: [ otlp ] 
+#     metrics: 
+#       exporters: [ otlp ] 
+#     logs: 
+#       exporters: [ otlp ] 
+service: 
+  # Enable the creation of a Service. 
+  # By default, it's enabled on mode != daemonset. 
+  # However, to enable it on mode = daemonset, its creation must be explicitly enabled 
+  enabled: true 
+  type: LoadBalancer 
+  loadBalancerIP: ""

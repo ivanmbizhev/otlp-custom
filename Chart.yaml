@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: 0.109.0
+description: otlp
+kubeVersion: '>=v1.25'
+name: otlp
+version: 0.106.1
+dependencies:
+  - name: opentelemetry-collector
+    version: 0.106.1
+    repository: https://open-telemetry.github.io/opentelemetry-helm-charts
