@@ -1,5 +1,9 @@
 mode: daemonset 
 
+image:
+  # If you want to use the core image `otel/opentelemetry-collector`, you also need to change `command.name` value to `otelcol`.
+  repository: "otel"
+
 presets: 
  # enables the k8sattributesprocessor and adds it to the traces, metrics, and logs pipelines 
   kubernetesAttributes: 
