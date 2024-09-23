@@ -10,7 +10,7 @@ spec:
           - name: opentelemetry-collector
             repoURL: "https://github.com/ivanmbizhev/otlp-custom.git"
             cluster: https://kubernetes.default.svc
-            targetRevision: master
+            targetRevision: main
             namespace: "otlp"
             path: .
             valueFile: otlp.yaml
