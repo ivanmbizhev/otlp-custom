@@ -20,7 +20,7 @@ presets:
 config: 
   exporters: 
     otlp: 
-      endpoint: "tempo-distributor.grafana-tempo.svc.cluster.local:4317" 
+      endpoint: "prom-loki-tempo.monitoring.svc.cluster.local:4317" 
       tls: 
         insecure: true 
   service: 
