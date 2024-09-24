@@ -13,9 +13,9 @@ opentelemetry-collector:
     kubernetesAttributes: 
       enabled: true 
     kubeletMetrics: 
-      enabled: false 
+      enabled: true 
     logsCollection: 
-      enabled: false 
+      enabled: true 
   config: 
     exporters: 
       otlp: 
@@ -23,10 +23,12 @@ opentelemetry-collector:
         tls: 
           insecure: true 
     service: 
+      telemetry: 
+        logs: 
+          level: "debug" 
       pipelines: 
         traces: 
-          exporters:
-            - otlp
+          exporters: [ otlp ] 
   service:
     enabled: true 
     type: NodePort
