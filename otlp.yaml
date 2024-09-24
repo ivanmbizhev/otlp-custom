@@ -13,9 +13,9 @@ opentelemetry-collector:
     kubernetesAttributes: 
       enabled: true 
     kubeletMetrics: 
-      enabled: true 
+      enabled: false 
     logsCollection: 
-      enabled: true 
+      enabled: false 
   config: 
     exporters: 
       otlp: 
