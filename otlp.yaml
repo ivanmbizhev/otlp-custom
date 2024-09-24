@@ -34,4 +34,4 @@ opentelemetry-collector:
       pipelines: 
         traces: 
           exporters:
-            - otlphttp
+            - otlp
