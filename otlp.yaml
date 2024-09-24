@@ -28,9 +28,7 @@ opentelemetry-collector:
           level: "debug" 
       pipelines: 
         traces: 
-          exporters:
-            - otlp
-            - jaeger 
+          exporters: [ otlp ]
   service:
     enabled: true 
     type: NodePort
