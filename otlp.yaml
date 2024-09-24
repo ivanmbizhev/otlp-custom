@@ -22,13 +22,16 @@ opentelemetry-collector:
         endpoint: "prom-loki-tempo.monitoring.svc.cluster.local:4317"
         tls: 
           insecure: true 
+      jaeger: # Adding Jaeger exporter to connect with HotROD
+        endpoint: "prom-loki-tempo.monitoring.svc.cluster.local:6831"
+        agent: true
     service: 
       telemetry: 
         logs: 
           level: "debug" 
       pipelines: 
         traces: 
-          exporters: [ otlp ] 
+          exporters: [ otlp, jaeger] 
   service:
     enabled: true 
     type: NodePort
