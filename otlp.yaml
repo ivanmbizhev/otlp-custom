@@ -30,9 +30,8 @@ opentelemetry-collector:
     service: 
       telemetry: 
         logs: 
-          exporters:
-            - otlphttp
           level: "debug" 
       pipelines: 
         traces: 
-          exporters: [ otlp ]
+          exporters:
+            - otlphttp
