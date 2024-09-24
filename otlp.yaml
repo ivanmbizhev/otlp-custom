@@ -29,4 +29,4 @@ opentelemetry-collector:
             - otlp
   service:
     enabled: true 
-    type: LoadBalancer
+    type: NodePort
