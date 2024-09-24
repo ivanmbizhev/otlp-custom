@@ -19,7 +19,7 @@ opentelemetry-collector:
   config: 
     exporters: 
       otlp: 
-        endpoint: "prom-loki-tempo.monitoring.svc.cluster.local:4318"
+        endpoint: "prom-loki-tempo.monitoring.svc.cluster.local:4317"
         tls: 
           insecure: true 
     service: 
