@@ -5,6 +5,9 @@ opentelemetry-collector:
     # If you want to use the core image `otel/opentelemetry-collector`, you also need to change `command.name` value to `otelcol`.
     repository: "otel/opentelemetry-collector-k8s"
 
+  command:
+    name: "otelcol-k8s"
+
   presets: 
   # enables the k8sattributesprocessor and adds it to the traces, metrics, and logs pipelines 
     kubernetesAttributes: 
