@@ -27,4 +27,6 @@ opentelemetry-collector:
         traces: 
           exporters:
             - otlp
-      type: LoadBalancer
+  service:
+    enabled: true 
+    type: LoadBalancer
